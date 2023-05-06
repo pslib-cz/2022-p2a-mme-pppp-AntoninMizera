@@ -14,8 +14,6 @@ ApplicationWindow {
 
     title: "KiOS"
 
-    visibility: "FullScreen"
-
     header: Header {
         id: hdr
     }
@@ -27,6 +25,8 @@ ApplicationWindow {
             color: "#e9e9e9"
         }
         anchors.fill: parent
+
+        clip: true
     }
 
     Component.onCompleted: {
