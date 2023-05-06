@@ -9,8 +9,10 @@ ApplicationWindow {
     visible: true
     color: "white"
 
-    minimumWidth: 1024
-    minimumHeight: 768
+    minimumWidth: 800
+    minimumHeight: 480
+
+    font.family: "Noto Sans"
 
     title: "KiOS"
 
