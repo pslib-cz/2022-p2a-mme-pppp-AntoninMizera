@@ -33,23 +33,26 @@ Item {
         profile.offTheRecord: true
         id: webview
         onNewViewRequested: function(request) {
-            print(`New view requested at ${request.requestedUrl}, origin: ${urlUtils.getOrigin(request.requestedUrl)}`)
+            console.warn(`New view requested at ${request.requestedUrl}, origin: ${urlUtils.getOrigin(request.requestedUrl)}`)
             if (root.allowedOrigins.includes(urlUtils.getOrigin(request.requestedUrl)) 
                 || root.allowedUrls.some(x => String(request.requestedUrl).startsWith(x))) {
                 request.openIn(webview)
             } else {
-                // TODO: Maybe it would be worth it to let the user know?
-                print(`${request.requestedUrl} isn't in the list of allowed origins`)
+                fadeIn.start()
+                errorTimer.start()
+                console.warn(`${request.requestedUrl} isn't in the list of allowed origins`)
             }
         }
         onNavigationRequested: function(request) {
-            print(`Navigation requested at ${request.url}, origin: ${urlUtils.getOrigin(request.url)}`)
+            console.warn(`Navigation requested at ${request.url}, origin: ${urlUtils.getOrigin(request.url)}`)
             if (root.allowedOrigins.includes(urlUtils.getOrigin(request.url)) 
                 || root.allowedUrls.some(x => String(request.url).startsWith(x))) {
                 request.action = WebEngineNavigationRequest.AcceptRequest
             } else {
-                print(`${request.url} isn't in the list of allowed origins`)
-                // TODO: Maybe it would be worth it to let the user know?
+                console.warn(`${request.url} isn't in the list of allowed origins`)
+
+                fadeIn.start()
+                errorTimer.start()
                 request.action = WebEngineNavigationRequest.IgnoreRequest
             }
         }
@@ -59,6 +62,70 @@ Item {
             ev.accepted = true;
         }
     }
+
+    Rectangle {
+        color: Constants.errorBackground
+        id: errorRect
+
+        z: 999
+        opacity: 0
+
+        anchors.horizontalCenter: root.horizontalCenter
+        anchors.bottom: root.bottom
+        anchors.bottomMargin: 8.75 * Constants.baseSize
+
+        width: text.width + 2 * Constants.baseSize
+        height: text.height + 2 * Constants.baseSize
+
+        radius: Constants.baseSize / 4
+
+        Text {
+            id: text
+            color: Constants.errorTextColor
+
+            anchors.centerIn: errorRect
+            anchors.margins: Constants.baseSize
+
+            font.pixelSize: 1.5 * Constants.baseSize
+            font.weight: Font.Bold
+            font.family: Constants.fontFamily
+
+            text: Constants.forbiddenNavigationText
+        }
+
+        NumberAnimation on opacity {
+            id: fadeIn
+            from: 0
+            to: 1
+
+            easing.type: Easing.InOutQuad
+
+            running: false
+
+            duration: Constants.animationDuration
+        }
+
+        NumberAnimation on opacity {
+            id: fadeOut
+            from: 1
+            to: 0
+
+            easing.type: Easing.OutInQuad
+
+            running: false
+
+            duration: Constants.animationDuration
+        }
+
+        Timer {
+            id: errorTimer
+            interval: 2500
+
+            onTriggered: fadeOut.start()
+        }
+    }
+
+    
     
     HomeButton {}
 }
