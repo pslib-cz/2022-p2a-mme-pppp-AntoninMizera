@@ -16,7 +16,7 @@ The kiosk should run on any reasonably performant hardware, including integrated
 1. The resulting archive (`install_archlinux_x86-64.tar.gz`) can be copied over to another USB drive, or you can use a simple web server.
 1. Download the [Arch Linux](https://archlinux.org/download/) installation ISO file, and create an installation medium. To create one, [Rufus](https://rufus.ie/) can be used under Windows. 
 
-## Instalace
+## Installation
 1. Copy or download the installation archive, and extract it.
 
     ```bash
