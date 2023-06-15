@@ -9,7 +9,15 @@ The installation steps depend on the used platform for this project:
 - [Raspberry Pi 3B+/4][install-aarch64]
 
 ## Reference Application
-The reference kiosk application shown to users is written using Python and QML using PyQt5 and Qt Quick frameworks. The documentation sites for these frameworks can be found here:
+The reference kiosk application shown to users consists of two primary components/packages:
+- the main Python application in the [`app/`](app/) directory
+- the Qt Quick (QML) UI in the [`qml/`](qml/) directory
+
+The main Python application is responsible for setting up the environment for the QML UI to use &ndash; automatically loading fonts, using appropriate file paths for the local and Flatpak versions, and initializing additional QML types where the built-in Qt Quick library support isn't enough.
+
+The UI bundled with the application has been designed to be highly configurable using the [`qml/Constants.js`](qml/Constants.js) file. However, you can replace the entire UI with your own as you wish.
+
+The documentation sites for these frameworks can be found here:
 - [PyQt][pyqt-docs]
 - [Qt Quick/QML][qt-quick-docs]
 

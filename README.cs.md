@@ -9,7 +9,15 @@ Instalační kroky závisí na použité platformě:
 - [Raspberry Pi 3B+/4][install-aarch64]
 
 ## Referenční aplikace
-Referenční aplikace zobrazená uživatelům je napsána v Pythonu a QML pomocí frameworků PyQt5 a Qt Quick. Dokumentaci k těmto frameworkům lze nalézt zde:
+Referenční aplikace zobrazená uživatelům je sestavena ze dvou hlavních komponent/balíčků:
+- hlavní aplikace napsaná v Pythonu ve složce [`app/`](app/)
+- UI napsané v QML pomocí Qt Quick ve složce [`qml/`](qml/)
+
+Hlavní aplikace v Pythonu zodpovídá především za nastavení prostředí, které používá UI v QML &ndash; tj. automatické načítání písem, používání korektních cest k souborům v závislosti na použití lokální/flatpakové verze a inicializaci dodatečných QML typů, kde podpora vestavěné knihovny Qt Quick nestačí.
+
+UI přiložené k aplikaci bylo navrženo tak, aby bylo vysoce konfigurovatelné pomocí souboru [`qml/Constants.js`](qml/Constants.js). Ale nic vám nebrání vyměnit celé UI za vlastní dle vašeho přání.
+
+Dokumentaci k těmto frameworkům lze nalézt zde:
 - [PyQt][pyqt-docs]
 - [Qt Quick/QML][qt-quick-docs]
 
