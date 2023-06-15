@@ -44,6 +44,7 @@ Item {
             }
         }
         onNavigationRequested: function(request) {
+            if (!request.isMainFrame && !Constants.applyAllowedOriginsToFrames) return;
             console.warn(`Navigation requested at ${request.url}, origin: ${urlUtils.getOrigin(request.url)}`)
             if (root.allowedOrigins.includes(urlUtils.getOrigin(request.url)) 
                 || root.allowedUrls.some(x => String(request.url).startsWith(x))) {
@@ -51,8 +52,10 @@ Item {
             } else {
                 console.warn(`${request.url} isn't in the list of allowed origins`)
 
-                fadeIn.start()
-                errorTimer.start()
+                if (request.isMainFrame) {
+                    fadeIn.start()
+                    errorTimer.start()
+                }
                 request.action = WebEngineNavigationRequest.IgnoreRequest
             }
         }

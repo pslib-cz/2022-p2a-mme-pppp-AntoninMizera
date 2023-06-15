@@ -137,3 +137,10 @@ const forbiddenNavigationText = "Toto ti nedovolím!";
  */
 const animationDuration = 300;
 
+/**
+ * Whether to apply the allowed origin restriction to <iframe>s
+ * and others.
+ * 
+ * Urcuje, zda se omezeni povolenych serveru aplikuje i na <iframe>y.
+ */
+const applyAllowedOriginsToFrames = false;
