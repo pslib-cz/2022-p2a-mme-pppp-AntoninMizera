@@ -7,7 +7,7 @@ Tento dokument je návodem k sestavení kiosku za použití jednodeskového poč
 - 2x propojovací kabel (měl by být obsažen v balení dotykového displeje) nebo externí Micro-USB zdroj 5 V napájení.
 - 4x M2.5/6 mm šroubek (měl by být obsažen v balení dotykového displeje)
 - 10 cm dlouhý 15žilný páskový kabel kompatibilní s RPi (měl by být obsažen v balení dotykového displeje)
-- 4x Samec-Samice M3/6 mm, 20 mm dlouhé distanční sloupky (nepovinné)
+- 4x Samec-Samice M3/6 mm, 34 mm dlouhé distanční sloupky (nepovinné, ohledně délky jsou ještě dodatečné informace [níže v dokumentu](#mechanické-sestavování-rpi-dotykového-displeje-a-případně-krabičky))
 - 3D tiskárna, s alespoň 20 x 14 cm velkým beden (nepovinné)
 - Ethernetový kabel (nepovinné)
 - 4x M3 šroubky rozumné délky (nepovinné)
@@ -66,19 +66,27 @@ Tento dokument je návodem k sestavení kiosku za použití jednodeskového poč
 
 1. Prostrčte potřebné kabely dírkami v krabičce. (nepovinné)
 
+    > **Warning**  
+    > Pokud používáte RPi 4 (nebo jakýkoliv model napájený prostřednictvím konektoru USB typu C), může být tento krok složitější, neboť samotný USB-C konektor je přes 3cm dlouhý, takže se může stát (a pravděpodobně stane), že se Vám RPi nepodaří s připojeným konektorem do krabičky zasunout, a budete jej muset připojit až dodatečně.
+
     ![Obrázek krabičky s prostrčenými kabely](images/box_with_cables.jpg)
 
 1. Zašroubujte distanční sloupky do děr na displeji. (nepovinné)
 
+    > **Note**
+    > Délka distančních sloupků se může lišit a vzhledem k tomu, že sehnat přesně dlouhé distanční sloupky může být náročné, toto je prostor pro Vaši improvizaci. Je však nutné se držet základních pravidel. Distanční sloupky nesmí být delší 34 mm, jinak se do krabice nevejdou. Když naopak používáte sloupky kratší (což je dost pravděpodobné), pamatujte, že šroubky na zadní straně krabice musí být dostatečně dlouhé, aby dosáhly na na distanční sloupky a bylo tak možné displej uchytit a zároveň by neměly příliš přesahovat záda krabice. (toho lze jednoduše dosáhnout použitím standardních [kovoobraběčských](https://cs.wikipedia.org/wiki/Piln%C3%ADk) nástrojů) Samozřejmě mějte na paměti, že čím kratší sloupky budou, tím menší podporu poskytnou pro displej.
+
+    ![Pravý pohled krabičky](images/box_drawing.png)
+
     ![Obrázek distančních sloupků ve správných dírkách](images/touchscreen_standoffs.jpg)
 
-1. Připojte kabely k RPi, a strčte ho do krabičky. (nepovinné)
+2. Připojte kabely k RPi a strčte ho do krabičky. (nepovinné)
 
     >**Warning**  
     > I pokud nepoužíváte naší krabici, zvažte zapojení ethernetového kabelu, jinak vám nemusí fungovat připojení k internetu.
 
-    ![Obrázek RPi v krabičce](images/rpi_in_the_box)
+    ![Obrázek RPi v krabičce](images/rpi_in_the_box.jpg)
 
-1. Použijte 4 M3 šroubky k zafixování zad krabice k distančním sloupkům. (nepovinné)
+3. Použijte 4 M3 šroubky k zafixování zad krabice k distančním sloupkům. (nepovinné)
 
     ![Obrázek zad krabičky se šroubky](images/box_back.jpg)

@@ -7,7 +7,7 @@ This document is a guide on how to assemble the kiosk itself using Raspberry Pi 
 - 2x jumper cables (should come with the touchscreen) or an external Micro-USB 5V power source
 - 4x M2.5/6mm bolts (should come with the touchscreen)
 - 10cm long 15-way ribbon cable compatible with RPi (should come with the touchscreen)
-- 4x Male-Female M3/6mm, 20mm long standoffs (optional)
+- 4x Male-Female M3/6mm, 34mm long standoffs (optional, for more information on the length, take a look [further in this document](#mechanically-assembling-the-rpi-the-touchscreen-and-optionally-the-box))
 - 3D printer, with at least 20x14cm bed (optional)
 - Ethernet cable (optional)
 - 4x M3 bolts of rational length (optional)
@@ -66,19 +66,27 @@ This document is a guide on how to assemble the kiosk itself using Raspberry Pi 
 
 1. Stick the necessary cables through the holes in the box. (optional)
 
+    > **Warning**  
+    > When using RPi 4 (or anything using USB-C connector for power), this step might be very tricky, since the connector itself is about 3cm long, which means you might need to put it inside afterwards when the whole thing is assembled.
+
     ![A picture of the box with the cables stuck through the holes](images/box_with_cables.jpg)
 
 1. Insert the standoffs into the holes on the display. (optional)
 
+    > **Note**  
+    > The length of the standoffs may vary, and getting the accurately long ones might be a bit tricky, so this is a place for you to improvise. Just keep in mind that they must not be longer than 34mm because otherwise they will not fit in the box. Also when using shorter ones, mind that the bolts used to attach the electronics to the box from the back must be long enough to reach the standoffs, and also short enough to not stick from the back too much. (to achieve this you can use [standard tools](https://en.wikipedia.org/wiki/File_(tool)) And of course the shorter the standoffs are, the less support for the touchscreen will they provide.
+
+    ![Box mechanical drawing](images/box_drawing.png)
+
     ![Picture of the standoffs in the correct holes](images/touchscreen_standoffs.jpg)
 
-1. Connect the cables to the RPi and fit it in the box. (optional)
+2. Connect the cables to the RPi and fit it in the box. (optional)
 
     >**Warning**  
     >Even if not using our box, consider plugging the Ethernet cable in, or else your internet connection might not work.
 
-    ![Picture of the RPi inserted into the box](images/rpi_in_the_box)
+    ![Picture of the RPi inserted into the box](images/rpi_in_the_box.jpg)
 
-1. Use 4 M3 bolts to fix the standoffs to the back of the box. (optional)
+3. Use 4 M3 bolts to fix the standoffs to the back of the box. (optional)
 
     ![Picture of the bolts on the back of the box](images/box_back.jpg)
