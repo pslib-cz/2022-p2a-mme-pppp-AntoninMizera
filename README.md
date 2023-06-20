@@ -36,6 +36,33 @@ python3 main.py
 
 A [guide][build-instructions] is available to build the Flatpak version primarily intended for production deployments.
 
+## Known Issues
+During development, we've found following issues that we haven't found a correct fix to yet.
+
+- **Reference application freezes when user switches to another terminal**
+
+  The intended usage of this kiosk system is without a keyboard. However, when you decide to use it with one, you may notice that the reference application freezes when pressing `Alt+F1-F6` to switch terminals until the compositor is terminated.
+
+  This can be mitigated by disabling other virtual terminals than `tty1`:
+
+  1. Create a file called `01-disable-vts.conf` in the `/etc/systemd/logind.conf.d` with following contents:
+
+      ```ini
+      [Login]
+      NAutoVTs=1
+      ReserveVT=0
+      ```
+
+      > **Note**  
+      > The following directory might not be present. If so, create it using the `mkdir -p` command.
+
+  1. In the `/home/kiosk/.config/weston.ini` file, add the following section:
+      ```ini
+      [keyboard]
+      vt-switching=false
+      ```
+  1. Reboot the machine.
+
 ## License
 This project is licensed as follows:
 - The documentation for this project along with the `assemble_rpi_hw` folder are licensed under the [CC BY-SA 4.0](LICENSE-DOCS) license.

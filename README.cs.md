@@ -36,6 +36,33 @@ python3 main.py
 
 Pro sestavení flatpakové verze určené primárně pro produkční nasazení je dostupný [návod][build-instructions].
 
+## Známé chyby
+Během vývoje jsme narazili na následující problémy, na které jsme nenalezli korektní řešení:
+
+- **Referenční aplikace zamrzne při přepnutí se na jiný terminál**
+
+  Zamýšlené použití kiosku je bez klávesnice. Ale pokud se rozhodnete ji použít, zjistíte, že referenční apliace zamrzá při přepínání terminálů pomocí `Alt+F1-F6`, dokud se neukončí kompozitor.
+
+  Tomuto lze předejít zakázáním jiných terminálů, než je `tty1`:
+
+  1. Vytvořte soubor `01-disable-vts.conf` v adresáři `/etc/systemd/logind.conf.d` s následujícím obsahem:
+
+      ```ini
+      [Login]
+      NAutoVTs=1
+      ReserveVT=0
+      ```
+
+      > **Note**  
+      > Tato složka nemusí být na systému přítomna a tudíž ji bude nutné vytvořit pomocí příkazu `mkdir -p`.
+
+  1. Do souboru `/home/kiosk/.config/weston.ini` přidejte následující sekci:
+      ```ini
+      [keyboard]
+      vt-switching=false
+      ```
+  1. Restartujte počítač.
+
 ## Licence
 Tento projekt je licencován následovně:
 - Dokumentace k projektu společně se složkou `assemble_rpi_hw` je licencována pod licencí [CC BY-SA 4.0](LICENSE-DOCS).
