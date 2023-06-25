@@ -11,11 +11,11 @@ The installation steps depend on the used platform for this project:
 ## Reference Application
 The reference kiosk application shown to users consists of two primary components/packages:
 - the main Python application in the [`app/`](app/) directory
-- the Qt Quick (QML) UI in the [`qml/`](qml/) directory
+- the Qt Quick (QML) UI in the [`gui/`](gui/) directory
 
 The main Python application is responsible for setting up the environment for the QML UI to use &ndash; automatically loading fonts, using appropriate file paths for the local and Flatpak versions, and initializing additional QML types where the built-in Qt Quick library support isn't enough.
 
-The UI bundled with the application has been designed to be highly configurable using the [`qml/Constants.js`](qml/Constants.js) file. However, you can replace the entire UI with your own as you wish.
+The UI bundled with the application has been designed to be highly configurable using the [`gui/Constants.js`](gui/Constants.js) file. However, you can replace the entire UI with your own as you wish.
 
 The documentation sites for these frameworks can be found here:
 - [PyQt][pyqt-docs]
@@ -66,7 +66,7 @@ During development, we've found following issues that we haven't found a correct
 ## License
 This project is licensed as follows:
 - The documentation for this project along with the `assemble_rpi_hw` folder are licensed under the [CC BY-SA 4.0](LICENSE-DOCS) license.
-- The reference application contains the [Noto Sans][noto-sans] font in the `qml/fonts` directory distributed under the [SIL OFL 1.1](qml/fonts/OFL.txt) license.
+- The reference application contains the [Noto Sans][noto-sans] font in the `gui/fonts` directory distributed under the [SIL OFL 1.1](gui/fonts/OFL.txt) license.
 - The rest of the project is licensed under [GPL-3.0-or-later](LICENSE) license.
 
 

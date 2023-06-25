@@ -1,5 +1,5 @@
 #!/bin/bash
-VERSION="5.15-22.08"
+VERSION="6.3"
 ARCH=""
 
 if [[ -n $IS_AARCH64 ]]; then

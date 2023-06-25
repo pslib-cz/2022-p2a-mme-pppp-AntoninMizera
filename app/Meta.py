@@ -1,4 +1,4 @@
-from PyQt5.Qt import *
+from PyQt6.QtCore import *
 from sys import version
 
 class Meta(QObject):

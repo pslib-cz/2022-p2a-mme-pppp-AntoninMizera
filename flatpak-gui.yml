@@ -3,13 +3,13 @@ branch: "master"
 build-extension: true
 runtime: cz.tttie.KiOS
 runtime-version: 'master'
-sdk: org.kde.Sdk//5.15-22.08
+sdk: org.kde.Sdk//6.3
 modules:
   - name: app
     buildsystem: simple
     build-commands:
-        - cp -a . /app/qml
+        - cp -a . /app/gui
     sources:
       - type: dir
-        path: qml
+        path: gui
 

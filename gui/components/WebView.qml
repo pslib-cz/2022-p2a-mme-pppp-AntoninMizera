@@ -2,11 +2,9 @@
 //This concept is more of an experiment
 
 import QtQuick 2.12
-import QtGraphicalEffects 1.15
-import QtQuick.Controls 2.12
+import QtQuick.Controls.Basic 2.12
 import QtQuick.Layouts 1.15
-import QtWebEngine 1.10
-import URLUtils 1.0
+import QtWebEngine 1.12
 import "../utils" as Utils
 import "../api" as API
 import "../Constants.js" as Constants
@@ -26,15 +24,12 @@ Item {
 
     WebEngineView {
         anchors.fill: root
-        URLUtils {
-            id: urlUtils
-        }
 
         profile.offTheRecord: true
         id: webview
-        onNewViewRequested: function(request) {
-            console.warn(`New view requested at ${request.requestedUrl}, origin: ${urlUtils.getOrigin(request.requestedUrl)}`)
-            if (root.allowedOrigins.includes(urlUtils.getOrigin(request.requestedUrl)) 
+        onNewWindowRequested: function(request) {
+            console.warn(`New view requested at ${request.requestedUrl}, origin: ${new URL(request.requestedUrl).hostname}`)
+            if (root.allowedOrigins.includes(new URL(request.requestedUrl).hostname) 
                 || root.allowedUrls.some(x => String(request.requestedUrl).startsWith(x))) {
                 request.openIn(webview)
             } else {
@@ -45,10 +40,10 @@ Item {
         }
         onNavigationRequested: function(request) {
             if (!request.isMainFrame && !Constants.applyAllowedOriginsToFrames) return;
-            console.warn(`Navigation requested at ${request.url}, origin: ${urlUtils.getOrigin(request.url)}`)
-            if (root.allowedOrigins.includes(urlUtils.getOrigin(request.url)) 
+            console.warn(`Navigation requested at ${request.url}, origin: ${new URL(request.url).hostname}`)
+            if (root.allowedOrigins.includes(new URL(request.url).hostname) 
                 || root.allowedUrls.some(x => String(request.url).startsWith(x))) {
-                request.action = WebEngineNavigationRequest.AcceptRequest
+                request.accept()
             } else {
                 console.warn(`${request.url} isn't in the list of allowed origins`)
 
@@ -56,7 +51,7 @@ Item {
                     fadeIn.start()
                     errorTimer.start()
                 }
-                request.action = WebEngineNavigationRequest.IgnoreRequest
+                request.reject();
             }
         }
 

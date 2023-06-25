@@ -11,11 +11,11 @@ Instalační kroky závisí na použité platformě:
 ## Referenční aplikace
 Referenční aplikace zobrazená uživatelům je sestavena ze dvou hlavních komponent/balíčků:
 - hlavní aplikace napsaná v Pythonu ve složce [`app/`](app/)
-- UI napsané v QML pomocí Qt Quick ve složce [`qml/`](qml/)
+- UI napsané v QML pomocí Qt Quick ve složce [`gui/`](gui/)
 
 Hlavní aplikace v Pythonu zodpovídá především za nastavení prostředí, které používá UI v QML &ndash; tj. automatické načítání písem, používání korektních cest k souborům v závislosti na použití lokální/flatpakové verze a inicializaci dodatečných QML typů, kde podpora vestavěné knihovny Qt Quick nestačí.
 
-UI přiložené k aplikaci bylo navrženo tak, aby bylo vysoce konfigurovatelné pomocí souboru [`qml/Constants.js`](qml/Constants.js). Ale nic vám nebrání vyměnit celé UI za vlastní dle vašeho přání.
+UI přiložené k aplikaci bylo navrženo tak, aby bylo vysoce konfigurovatelné pomocí souboru [`gui/Constants.js`](gui/Constants.js). Ale nic vám nebrání vyměnit celé UI za vlastní dle vašeho přání.
 
 Dokumentaci k těmto frameworkům lze nalézt zde:
 - [PyQt][pyqt-docs]
@@ -66,7 +66,7 @@ Během vývoje jsme narazili na následující problémy, na které jsme nenalez
 ## Licence
 Tento projekt je licencován následovně:
 - Dokumentace k projektu společně se složkou `assemble_rpi_hw` je licencována pod licencí [CC BY-SA 4.0](LICENSE-DOCS).
-- Referenční aplikace obsahuje ve složce `qml/fonts` písmo [Noto Sans][noto-sans] šířené pod licencí [SIL OFL 1.1](qml/fonts/OFL.txt).
+- Referenční aplikace obsahuje ve složce `gui/fonts` písmo [Noto Sans][noto-sans] šířené pod licencí [SIL OFL 1.1](gui/fonts/OFL.txt).
 - Zbytek projektu je licencován pod licencí [GPL 3.0 nebo novějšími verzemi](LICENSE).
 
 

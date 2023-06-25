@@ -1,5 +1,5 @@
 import QtQuick 2.12
-import QtQuick.Controls 2.12
+import QtQuick.Controls.Basic 2.12
 import QtQuick.Layouts 1.15
 import "../utils" as Utils
 import "../Constants.js" as Constants
@@ -48,6 +48,7 @@ Button {
     background: Rectangle {
         implicitWidth: contentItem.implicitWidth + 2 * Constants.baseSize
         implicitHeight: contentItem.implicitHeight + 2 * Constants.baseSize
+        radius: Constants.baseSize / 4
 
         color: Constants.buttonColor
     }

@@ -1,5 +1,5 @@
 import QtQuick 2.12
-import QtQuick.Controls 2.12
+import QtQuick.Controls.Basic 2.12
 import QtQuick.Layouts 1.15
 import "utils" as Utils
 import "components" as Components
@@ -18,7 +18,7 @@ Rectangle {
     Utils.DPIAwareSVGImage {
         anchors.left: root.left
         anchors.verticalCenter: root.verticalCenter
-        source: "icons/logo.svg"
+        source: Qt.resolvedUrl("icons/logo.svg")
 
         height: 3.75 * Constants.baseSize
         width: 14.125 * Constants.baseSize
