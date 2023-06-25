@@ -51,6 +51,17 @@ This document is a guide on how to install the base kiosk operating system on Ra
 
     The commands to launch when the kiosk starts can be set in `/var/lib/kiosk/launch_kiosk.sh`. In the default setting, a reference application with the identifier of `cz.tttie.KiOS` will be launched using Flatpak. 
 
+    It also might be worth it to flip the screen upside down if you're using our box and would like to have the USB connector coming from the top. This can be done by adding the following to the `/home/kiosk/.config/weston.ini` file:
+    ```ini
+    # If you're using a different display than the official touchscreen,
+    # you will have to find out the correct connector. This can be gotten
+    # with the help of the /sys/class/drm directory.
+    # See weston-drm(7) for more info on available options
+    [output]
+    name=DSI-1
+    transform=rotate-180
+    ``` 
+
 1. Launch the automatic startup of the Weston compositor: 
 
     ```bash

@@ -46,6 +46,16 @@ Kiosek by měl fungovat pod jakýmkoli důstojně výkonným hardwarem, včetně
 1. Přihlašte se jako uživatel `root` a doinstalujte potřebné aplikace (např. potřebujete-li, SSH server) a dokonfigurujte systém. K nastavení síťového přístupu vám poslouží příkaz `nmtui`. (údaje z instalačního prostředí se nepřenášejí)
 
     Příkazy, které se spustí při zapnutí kiosku, lze nastavit v souboru `/var/lib/kiosk/launch_kiosk.sh`. Ve výchozím nastavení spustí referenční aplikaci s identifikátorem `cz.tttie.KiOS` pomocí Flatpaku. 
+
+    I když je to nepravděpodobné, je možné, že vaše konfigurace bude vyžadovat otočení displeje. To lze zajistit přidáním následujících řádků do souboru `/home/kiosk/.config/weston.ini`:
+    ```ini
+    # Je potřeba zjistit použitý konektor pro váš displej.
+    # To lze zjistit pomocí adresáře /sys/class/drm.
+    # Více informací a možností naleznete v weston-drm(7)
+    [output]
+    name=DP-1
+    transform=rotate-180
+    ```
 1. Zapněte automatické spuštění kompozitoru Weston:
 
     ```bash

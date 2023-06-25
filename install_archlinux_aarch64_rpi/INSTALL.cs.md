@@ -51,6 +51,17 @@ Tento dokument je návodem k instalaci základového operačního systému kiosk
 
     Příkazy, které se spustí při zapnutí kiosku, lze nastavit v souboru `/var/lib/kiosk/launch_kiosk.sh`. Ve výchozím nastavení spustí referenční aplikaci s identifikátorem `cz.tttie.KiOS` pomocí Flatpaku. 
 
+    Je možné, že vám bude více vyhovovat převrácení vzhůru nohama, zejména pokud používáte naši krabičku a chtěli byste, aby USB konektor přicházel z horní strany. To lze zajistit přidáním následujících řádků do souboru `/home/kiosk/.config/weston.ini`:
+    ```ini
+    # Používáte-li jiný displej než oficiální dotykový, bude
+    # potřeba zjistit použitý konektor. To lze zjistit pomocí
+    # adresáře /sys/class/drm.
+    # Více informací a možností naleznete v weston-drm(7)
+    [output]
+    name=DSI-1
+    transform=rotate-180
+    ```
+
 1. Zapněte automatické spuštění kompozitoru Weston:
 
     ```bash

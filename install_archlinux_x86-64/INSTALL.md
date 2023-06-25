@@ -46,6 +46,17 @@ The kiosk should run on any reasonably performant hardware, including integrated
 1. Log in as the `root` user, install required applications (e.g. the SSH server, if you need one), and configure the system. For setting up the internet connection, the `nmtui` command can be used. (the credentials from the installation environment are not carried over)
 
     The commands to launch when the kiosk starts can be set in `/var/lib/kiosk/launch_kiosk.sh`. In the default setting, a reference application with the identifier of `cz.tttie.KiOS` will be launched using Flatpak. 
+
+    Although unlikely, it is possible that your setup might require to rotate the screen. This can be done by adding the following to the `/home/kiosk/.config/weston.ini` file:
+    ```ini
+    # You will have to find out the correct connector for your display.
+    # This can be gotten with the help of the /sys/class/drm directory.
+    # See weston-drm(7) for more info on available options
+    [output]
+    name=DP-1
+    transform=rotate-180
+    ``` 
+
 1. Launch the automatic startup of the Weston compositor: 
 
     ```bash
